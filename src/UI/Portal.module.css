@@ -1,0 +1,36 @@
+.option_portal {
+    list-style: none;
+    width: 155px;
+    line-height: 2;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.164);
+    text-align: center;
+    padding: 0.8rem 0;
+    font-size: 15px;
+    position: absolute;
+    top: 40px;
+    z-index: 30;
+    /* right: 78px; */
+    position: fixed;
+  }
+  
+
+  /* HelpPortal */
+  .portal1 {
+    right: 55px;
+  }
+  
+  /* UserPoral */
+  .portal2 {
+    right: 20px;
+  }
+  
+  /* FilterPortal */
+  .portal3 {  
+    right: 78px;
+  }
+  .option_portal li:hover {
+    background-color: #cfcfcf;
+  }
+  
