@@ -137,8 +137,7 @@ const SupplyContract = () => {
     
   </div>
   <table
-    variant="striped"
-    colorScheme="blue"
+    colorScheme="white"
     className="TableMain"
     {...getTableProps()}
   >
