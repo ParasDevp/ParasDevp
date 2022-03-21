@@ -1,17 +1,20 @@
-import React from 'react';
-import './SupplyContract.css';
+import React from "react";
+import "./SupplyContract.css";
 import { useEffect, useMemo, useState } from "react";
 import { useTable, useSortBy } from "react-table";
 import dataa from "../../json/jsonData";
 import { CSVLink } from "react-csv";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDownload,faUpLong,faDownLong} from "@fortawesome/free-solid-svg-icons";
+import {
+  faDownload,
+  faUpLong,
+  faDownLong,
+} from "@fortawesome/free-solid-svg-icons";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import { ExportToExcel } from "../../components/formFilters/ExportToExcel";
 
 import Filter from "../../components/formFilters/Filter";
-
-
+import SupplyContractFilter from "./SupplyContractFilter/SupplyContractFilter";
 
 const SupplyContract = () => {
   const Excel = () => {};
@@ -104,71 +107,76 @@ const SupplyContract = () => {
 
   console.log(customers);
 
-  return(
+  const [filterPortal, setFiltersPortal] = useState(false);
+
+  const handlePortal = () => {
+    setFiltersPortal(!filterPortal);
+    console.log(filterPortal);
+  };
+
+  return (
     <>
-    <div style={{ display: `flex`, justifyContent: `space-between` }}>
-    <h1 style={{ margin: `20px`, fontSize: `20px`}}>
-      Supply Contract
-    </h1>
+      {filterPortal && <SupplyContractFilter onclose={handlePortal} />}
+      <div style={{ display: `flex`, justifyContent: `space-between` }}>
+        <h1 style={{ margin: `20px`, fontSize: `20px` }}>Supply Contract</h1>
 
-
-
-    <div style={{display :`flex`}}>
-    <div style={{ margin: `20px`, fontSize: `25px`, fontFamily: `cursive` }}>
-
-  
-    
-    </div>
-    <div class="dropdown">
-      <button class="dropbtn">
-        Download
-        <FontAwesomeIcon icon={faDownload} />
-
-      </button>
-      <div class="dropdown-content">
-        <ExportToExcel apiData={data} fileName={filename} />
-        <CSVLink filename={filename} data={data}>
-          <button style={{ textDecoration : `none`}}>CSV</button>
-        </CSVLink>
+        <div style={{ display: `flex` }}>
+          <div
+            style={{ margin: `20px`, fontSize: `25px`, fontFamily: `cursive` }}
+          ></div>
+          <div className="options">
+            <i className="fa-solid fa-filter" onClick={handlePortal}></i>
+            <div className="dropdown">
+              <button className="dropbtn">
+                <FontAwesomeIcon icon={faDownload} />
+              </button>
+              <div className="dropdown-content">
+                <ExportToExcel apiData={data} fileName={filename} />
+                <CSVLink filename={filename} data={data}>
+                  <button style={{ textDecoration: `none` }}>CSV</button>
+                </CSVLink>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-   
-    </div>
-    
-  </div>
-  <table
-    colorScheme="white"
-    className="TableMain"
-    {...getTableProps()}
-  >
-    <thead>
-      {headerGroups.map((headerGroup) => (
-        <tr {...headerGroup.getHeaderGroupProps()}>
-          {headerGroup.headers.map((column) => (
-            <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-              {column.render("Header")}
-              {column.isSorted ? (column.isSortedDesc ? ( <FontAwesomeIcon icon={faUpLong} />) : (<FontAwesomeIcon icon={faDownLong}/>)) : ""}
-              {}
-            </th>
+      <table colorScheme="white" className="TableMain" {...getTableProps()}>
+        <thead>
+          {headerGroups.map((headerGroup) => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column) => (
+                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                  {column.render("Header")}
+                  {column.isSorted ? (
+                    column.isSortedDesc ? (
+                      <FontAwesomeIcon icon={faUpLong} />
+                    ) : (
+                      <FontAwesomeIcon icon={faDownLong} />
+                    )
+                  ) : (
+                    ""
+                  )}
+                  {}
+                </th>
+              ))}
+            </tr>
           ))}
-        </tr>
-      ))}
-    </thead>
-    <tbody {...getTableBodyProps()}>
-      {rows.map((row, i) => {
-        prepareRow(row);
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {rows.map((row, i) => {
+            prepareRow(row);
 
-        return (
-          <tr {...row.getRowProps()}>
-            {row.cells.map((cell) => (
-              <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-            ))}
-          </tr>
-        );
-      })}
-    </tbody>
-  </table>
-  </>
+            return (
+              <tr {...row.getRowProps()}>
+                {row.cells.map((cell) => (
+                  <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                ))}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </>
   );
-  }
+};
 export default SupplyContract;
