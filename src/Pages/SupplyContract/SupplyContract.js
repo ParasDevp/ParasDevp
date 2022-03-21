@@ -107,7 +107,7 @@ const SupplyContract = () => {
   return(
     <>
     <div style={{ display: `flex`, justifyContent: `space-between` }}>
-    <h1 style={{ margin: `20px`, fontSize: `25px`, fontFamily: `cursive` }}>
+    <h1 style={{ margin: `20px`, fontSize: `20px`}}>
       Supply Contract
     </h1>
 
