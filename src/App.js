@@ -2,10 +2,9 @@ import styles from "./App.css";
 import { render } from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Navbar from "./components/navbar";
-import Menubar from "./components/menubar";
-import MainContent from "./components/maincontent";
-
+import Navbar from "./components/navbar/navbar";
+import Menubar from "./components/menubar/menubar";
+import MainContent from "./components/maincontent/maincontent";
 
 // All Pages
 
@@ -21,7 +20,6 @@ import Taxes from "./Pages/Taxes/Taxes";
 import ManageData from "./Pages/ManageData/ManageData";
 import SalesContract from "./Pages/SalesContract/SalesContract";
 
-
 function App() {
   return (
     <div className="App">
@@ -33,7 +31,7 @@ function App() {
             <Route path="/" element={<Quote />} />
             <Route path="/dispatch" element={<Dispatch />} />
             <Route path="/actualize" element={<Actualize />} />
-            <Route path="/invoice" element={<Invoice  />} />
+            <Route path="/invoice" element={<Invoice />} />
             <Route path="/supplycontract" element={<SupplyContract />} />
             <Route path="/salescontract" element={<SalesContract />} />
             <Route path="/suppliers" element={<Suppliers />} />
