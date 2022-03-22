@@ -11,13 +11,19 @@ const Menubar = () => {
   const [filtersPortalState, setFiltersPortalState] = useState(false);
 
   const handleUserPortal = () => {
+    setHelpPortalState(false);
+    setFiltersPortalState(false);
     setUserPortalState(!userPortalState);
   };
 
   const handleHelpPortal = () => {
+    setUserPortalState(false);
+    setFiltersPortalState(false);
     setHelpPortalState(!helpPortalState);
   };
   const handleFiltersPortal = () => {
+    setUserPortalState(false);
+    setHelpPortalState(false);
     setFiltersPortalState(!filtersPortalState);
   };
 

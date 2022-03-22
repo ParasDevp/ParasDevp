@@ -121,9 +121,9 @@ const SupplyContract = () => {
         <h1 style={{ margin: `20px`, fontSize: `20px` }}>Supply Contract</h1>
 
         <div style={{ display: `flex` }}>
-          <div
+          {/* <div
             style={{ margin: `20px`, fontSize: `25px`, fontFamily: `cursive` }}
-          ></div>
+          ></div> */}
           <div className="options">
             <i className="fa-solid fa-filter" onClick={handlePortal}></i>
             <div className="dropdown">
@@ -131,9 +131,11 @@ const SupplyContract = () => {
                 <FontAwesomeIcon icon={faDownload} />
               </button>
               <div className="dropdown-content">
+                <FontAwesomeIcon icon="fa-solid fa-file-excel" />
                 <ExportToExcel apiData={data} fileName={filename} />
                 <CSVLink filename={filename} data={data}>
-                  <button style={{ textDecoration: `none` }}>CSV</button>
+                  <FontAwesomeIcon icon="fa-solid fa-file-csv" />
+                  {/* <button style={{ textDecoration: `none` }}>CSV</button> */}
                 </CSVLink>
               </div>
             </div>
