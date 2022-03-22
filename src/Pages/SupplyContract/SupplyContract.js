@@ -118,7 +118,9 @@ const SupplyContract = () => {
     <>
       {filterPortal && <SupplyContractFilter onclose={handlePortal} />}
       <div style={{ display: `flex`, justifyContent: `space-between` }}>
-        <h1 style={{ margin: `20px`, fontSize: `20px` }}>Supply Contract</h1>
+        <h1 style={{ margin: `20px`, fontSize: `25px`, fontWeight: `400` }}>
+          Supply Contract
+        </h1>
 
         <div style={{ display: `flex` }}>
           {/* <div
@@ -135,7 +137,7 @@ const SupplyContract = () => {
                 <ExportToExcel apiData={data} fileName={filename} />
                 <CSVLink filename={filename} data={data}>
                   <FontAwesomeIcon icon="fa-solid fa-file-csv" />
-                  {/* <button style={{ textDecoration: `none` }}>CSV</button> */}
+                  <button style={{ textDecoration: `none` }}>CSV</button>
                 </CSVLink>
               </div>
             </div>

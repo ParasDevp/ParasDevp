@@ -67,7 +67,7 @@
   top: 15%;
   left: 50%;
   transform: translateX(-45%);
-  z-index: 30;
+  z-index: 101;
   /* right: 78px; */
   position: fixed;
   overflow-y: scroll;
