@@ -2,14 +2,17 @@ import React from "react";
 import "./SupplyContract.css";
 import { useEffect, useMemo, useState } from "react";
 import { useTable, useSortBy } from "react-table";
-import dataa from "../../json/jsonData";
+// import dataa from "../../json/jsonData";
 import { CSVLink } from "react-csv";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFileExcel } from "@fortawesome/free-solid-svg-icons";
 import {
   faDownload,
   faUpLong,
   faDownLong,
 } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
+
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import { ExportToExcel } from "../../components/formFilters/ExportToExcel";
 
@@ -65,9 +68,10 @@ const SupplyContract = () => {
   const [products, setProducts] = useState([]);
   const columns = useMemo(() => tableColumn, []);
   const data = useMemo(() => products, [products]);
+  const[supplierData, setSupplierdata] = useState('');
   const customers = [];
 
-  dataa.forEach(
+  supplierData.forEach(
     ({
       supplycontractid,
       supplycontractname,
@@ -101,11 +105,18 @@ const SupplyContract = () => {
     );
   useEffect(() => {
     setProducts(customers);
+    const fetchData = async() =>
+    {
+      const response =  await axios.get('http://localhost:3006/SupplierData')
+      .catch()
+      setSupplierdata(response.data);
+    }
+    fetchData()
   }, []);
-
   const filename = "Supplier Data";
+  console.log('getting data from axios',supplierData);
 
-  console.log(customers);
+  
 
   const [filterPortal, setFiltersPortal] = useState(false);
 
@@ -136,8 +147,7 @@ const SupplyContract = () => {
                 <FontAwesomeIcon icon="fa-solid fa-file-excel" />
                 <ExportToExcel apiData={data} fileName={filename} />
                 <CSVLink filename={filename} data={data}>
-                  <FontAwesomeIcon icon="fa-solid fa-file-csv" />
-                  <button style={{ textDecoration: `none` }}>CSV</button>
+                <FontAwesomeIcon icon={faFileExcel} style = {{ color: `black`, fontSize :`25px`, margin :`10px`}}/>
                 </CSVLink>
               </div>
             </div>
