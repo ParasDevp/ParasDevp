@@ -66,8 +66,8 @@ const SupplyContract = () => {
   const [products, setProducts] = useState([]);
   const columns = useMemo(() => tableColumn, []);
   const data = useMemo(() => products, [products]);
-  const [supplierData, setSupplierdata] = useState("");
-  const [flag, setflag] = useState(false);
+  const [supplierData, setSupplierdata] = useState('');
+//  const[customer,setcustomer] =useState([]);
   const customers = [];
   const fetchData = async () => {
     const response = await axios
@@ -105,7 +105,8 @@ const SupplyContract = () => {
         }
       );
     }
-  }, [setflag]);
+    
+  }, [supplierData]);
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable(
       {
@@ -114,16 +115,18 @@ const SupplyContract = () => {
       },
       useSortBy
     );
+    
 
   const filename = "Supplier Data";
 
-  console.log(flag);
+  
   const [filterPortal, setFiltersPortal] = useState(false);
 
   const handlePortal = () => {
     setFiltersPortal(!filterPortal);
     console.log(filterPortal);
   };
+  console.log(customers);
   return (
     <>
       {supplierData === "" ? (
