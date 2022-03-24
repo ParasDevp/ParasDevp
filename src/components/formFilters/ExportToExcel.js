@@ -18,6 +18,6 @@ export const ExportToExcel = ({ apiData, fileName }) => {
   };
 
   return (
-     <FontAwesomeIcon icon={faFileCsv}  style = {{ color: `black`,cursor : `pointer` ,fontSize :`25px`, margin :`10px`}}  onClick={(e) => exportToCSV(apiData, fileName)}/>
+     <FontAwesomeIcon icon={faFileCsv}  style = {{ color: `black`,cursor : `pointer`,fontSize :`25px`, margin :`10px`}}  onClick={(e) => exportToCSV(apiData, fileName)}/>
   );
 };
